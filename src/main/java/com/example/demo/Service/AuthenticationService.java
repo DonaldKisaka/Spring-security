@@ -35,7 +35,7 @@ public class AuthenticationService {
     }
 
     public User SignUp(RegisterUser input) {
-        User user = new User(input.getUsername(), passwordEncoder.encode(input.getPassword()), input.getEmail());
+        User user = new User(input.getUsername(),input.getEmail(), passwordEncoder.encode(input.getPassword()));
         user.setVerificationCode(generateVerificationCode());
         user.setVerificationCodeExpiresAt(LocalDateTime.now().plusMinutes(15));
         user.setEnabled(false);
